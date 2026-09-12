@@ -25,9 +25,9 @@ git push -u origin HEAD
 ```
 
 ### Step 3: Gather Commit History & PR Context
-Inspect the commit log between `main` and the current branch:
+Inspect the commit log between `dev` and the current branch:
 ```bash
-git log main..HEAD --oneline
+git log dev..HEAD --oneline
 ```
 Extract key changes, affected files, and context from `docs/features/`.
 
@@ -38,8 +38,8 @@ Format the PR description using `.github/pull_request_template.md`:
 - **Verification Scorecard**: Clean summary table showing test counts and durations.
 
 ### Step 5: Open Pull Request
-Create the PR using the GitHub CLI:
+Create the PR targeting `dev` using the GitHub CLI:
 ```bash
-gh pr create --title "<title>" --body "<body>"
+gh pr create --base dev --title "<title>" --body "<body>"
 ```
 If `gh` CLI is not installed or unauthenticated, output the formatted title and body for manual creation on GitHub.
