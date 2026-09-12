@@ -17,11 +17,11 @@ git status -s
 ```
 If dirty changes exist, ask the user to commit or stash them before proceeding.
 
-### Step 2: Switch to and Sync `main`
-Ensure you are branching from the freshest production state:
+### Step 2: Switch to and Sync `dev`
+Ensure you are branching from the freshest development state:
 ```bash
-git checkout main
-git pull origin main
+git checkout dev
+git pull origin dev
 ```
 
 ### Step 3: Branch Naming
