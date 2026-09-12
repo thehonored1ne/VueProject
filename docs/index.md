@@ -17,7 +17,9 @@ Welcome to the project's **Single Source of Truth (SSOT)**. This Obsidian vault 
   - **[[features/asset-management|AssetFlow Management]]**: Inventory dashboard, check-out/check-in, warranty tracking, and audit trails.
   - **[[features/software-licenses|Software Seat Management]]**: Seat allocations, overallocation prevention, and license renewals.
   - **[[features/asset-qr-export|Asset QR Labeling & Data Export]]**: Printable hardware label badges, thermal stickers, and streamed CSV exports.
+  - **[[features/maintenance-alerts|Hardware Maintenance & Expiration Alerts]]**: Equipment repairs, service logging, and warranty/renewal alerts.
 - **[[api/index|API & Routing]]**: Route endpoints, form request contracts, DTO shapes, and external integrations.
+- **[[changelog|Project Changelog]]**: Release history, milestones, and unreleased feature developments.
 
 ---
 
