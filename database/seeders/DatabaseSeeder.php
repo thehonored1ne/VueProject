@@ -20,6 +20,9 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@example.com',
         ]);
 
-        $this->call(AssetSeeder::class);
+        $this->call([
+            AssetSeeder::class,
+            SoftwareLicenseSeeder::class,
+        ]);
     }
 }
