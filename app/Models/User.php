@@ -46,6 +46,16 @@ class User extends Authenticatable
     }
 
     /**
+     * Software license seats held by this user.
+     *
+     * @return HasMany<LicenseAssignment, $this>
+     */
+    public function licenseAssignments(): HasMany
+    {
+        return $this->hasMany(LicenseAssignment::class);
+    }
+
+    /**
      * Get the attributes that should be cast.
      *
      * @return array<string, string>
