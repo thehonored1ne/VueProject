@@ -7,8 +7,12 @@ This is a full-stack Laravel 12 application using Vue 3, Inertia.js, TypeScript,
 
 ---
 
-## 1. Environment & Runtimes
+## 1. Environment & Context Source of Truth
 
+- **Obsidian Vault (`docs/`) - Single Source of Truth**:
+  - The `docs/` directory is an Obsidian vault representing the **Single Source of Truth (SSOT)** for all business logic, domain models, architectural decisions, and specs.
+  - **Pull Context**: Before writing code or designing features, always search and pull context from `docs/`.
+  - **Update Context**: Whenever building or modifying features, models, or workflows, keep `docs/` synchronized by updating or creating relevant notes.
 - **PHP Runtime**: The application is managed via Laravel Herd running PHP 8.5 (`C:\Users\USER\.config\herd\bin\php.bat`).
 - **PHP Compatibility**: Maintain backward compatibility with PHP 8.2+. When using PHP 8.5+ features (such as `Pdo\Mysql::ATTR_SSL_CA`), provide safe fallback guards (`defined(...) ? ... : ...`).
 - **Node.js**: Use modern Node.js and `npm` for frontend package management and building.
@@ -77,7 +81,8 @@ This is a full-stack Laravel 12 application using Vue 3, Inertia.js, TypeScript,
 
 - **Step 1: Intake & Intent Verification (Before Starting)**:
   - When given a task, do NOT start modifying code immediately.
-  - First, understand the user's intent and state what you understand in a clean, concise, no-fluff format.
+  - Pull and cross-reference context from the Obsidian vault (`docs/`) to ground the task in documented specifications.
+  - Understand the user's intent and state what you understand in a clean, concise, no-fluff format.
   - Summarize the objectives and planned steps straight to the point.
 - **Step 2: Mandatory Testing & Self-Correction (Before Concluding)**:
   - After completing changes, always execute tests first (`php artisan test` / Pest).
@@ -86,7 +91,8 @@ This is a full-stack Laravel 12 application using Vue 3, Inertia.js, TypeScript,
   - After accomplishing a task, report:
     1. **What was built**: New features, classes, actions, or components.
     2. **What was changed**: Specific files modified and the rationale.
-    3. **Proof of Passing Tests**: A clean, structured summary (e.g., test suites count, passed tests, assertions, duration). **Do NOT dump raw terminal output**.
+    3. **Context Synchronized**: Updates made to `docs/` reflecting the new implementation.
+    4. **Proof of Passing Tests**: A clean, structured summary (e.g., test suites count, passed tests, assertions, duration). **Do NOT dump raw terminal output**.
 
 ---
 
