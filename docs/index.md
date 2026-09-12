@@ -7,6 +7,9 @@ Welcome to the project's **Single Source of Truth (SSOT)**. This Obsidian vault 
 ## 🧭 Vault Directory Map
 
 - **[[architecture/index|Architecture]]**: System design, clean layered architecture, technology stack, and Architecture Decision Records (ADRs).
+  - **[[architecture/github-workflow|GitHub Developer Workflow]]**: End-to-end GitHub collaboration guide (Branch -> PR -> CI -> Merge).
+  - **[[architecture/dev-workflow|Local Dev Workflow]]**: Environment booting, live log streaming, testing, and daily dev loop.
+  - **[[architecture/git-workflows|Git & CI/CD Workflows]]**: Branching standards, Antigravity workflows, and GitHub Actions CI.
 - **[[domain/index|Domain Models]]**: Core business entities, Eloquent relationships, state machines, and business rules.
 - **[[features/index|Features & Flows]]**: Functional specifications, user stories, and Inertia Vue 3 screen workflows.
 - **[[api/index|API & Routing]]**: Route endpoints, form request contracts, DTO shapes, and external integrations.

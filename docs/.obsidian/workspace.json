@@ -183,6 +183,10 @@
   },
   "active": "85a2f67e2fca41a7",
   "lastOpenFiles": [
+    "architecture/github-workflow.md",
+    "architecture/dev-workflow.md",
+    "architecture/git-workflows.md",
+    "architecture",
     "index.md"
   ]
 }
