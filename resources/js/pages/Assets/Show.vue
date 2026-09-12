@@ -4,12 +4,13 @@ import AssetStatusBadge from '@/components/assets/AssetStatusBadge.vue';
 import AssetTimeline from '@/components/assets/AssetTimeline.vue';
 import AssignAssetModal from '@/components/assets/AssignAssetModal.vue';
 import CheckInAssetModal from '@/components/assets/CheckInAssetModal.vue';
+import MaintenanceTicketModal from '@/components/maintenance/MaintenanceTicketModal.vue';
 import { Button } from '@/components/ui/button';
 import AppLayout from '@/layouts/AppLayout.vue';
 import type { BreadcrumbItem } from '@/types';
 import type { Asset, UserSummary } from '@/types/asset';
 import { Head, Link, router } from '@inertiajs/vue3';
-import { AlertTriangle, CheckCircle, Clock, Edit, Laptop, LogIn, LogOut, QrCode, Trash2 } from 'lucide-vue-next';
+import { AlertTriangle, CheckCircle, Clock, Edit, Laptop, LogIn, LogOut, QrCode, Trash2, Wrench } from 'lucide-vue-next';
 import { computed, ref } from 'vue';
 
 const props = defineProps<{
@@ -31,6 +32,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 const assignModalOpen = ref(false);
 const checkInModalOpen = ref(false);
 const qrModalOpen = ref(false);
+const repairModalOpen = ref(false);
 
 const warrantyStatus = computed(() => {
     if (!props.asset.warranty_expires_at) return null;
@@ -144,6 +146,11 @@ function deleteAsset() {
                     <Button variant="outline" @click="qrModalOpen = true" class="gap-1.5">
                         <QrCode class="h-4 w-4" />
                         QR Label
+                    </Button>
+
+                    <Button v-if="asset.status !== 'maintenance'" variant="outline" class="gap-1.5" @click="repairModalOpen = true">
+                        <Wrench class="h-4 w-4" />
+                        Log Repair
                     </Button>
 
                     <Button as-child variant="outline">
@@ -303,5 +310,7 @@ function deleteAsset() {
         <CheckInAssetModal v-model:open="checkInModalOpen" :asset="asset" />
 
         <AssetQrModal v-model:open="qrModalOpen" :asset="asset" />
+
+        <MaintenanceTicketModal v-model:open="repairModalOpen" :asset="asset" />
     </AppLayout>
 </template>
