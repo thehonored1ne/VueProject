@@ -11,7 +11,9 @@ Welcome to the project's **Single Source of Truth (SSOT)**. This Obsidian vault 
   - **[[architecture/dev-workflow|Local Dev Workflow]]**: Environment booting, live log streaming, testing, and daily dev loop.
   - **[[architecture/git-workflows|Git & CI/CD Workflows]]**: Branching standards, Antigravity workflows, and GitHub Actions CI.
 - **[[domain/index|Domain Models]]**: Core business entities, Eloquent relationships, state machines, and business rules.
+  - **[[domain/assets|Assets & Custody Assignments]]**: Hardware registry, lifecycle states, and assignment models.
 - **[[features/index|Features & Flows]]**: Functional specifications, user stories, and Inertia Vue 3 screen workflows.
+  - **[[features/asset-management|AssetFlow Management]]**: Inventory dashboard, check-out/check-in, warranty tracking, and audit trails.
 - **[[api/index|API & Routing]]**: Route endpoints, form request contracts, DTO shapes, and external integrations.
 
 ---
