@@ -5,6 +5,7 @@ use App\Http\Controllers\AssetController;
 use App\Http\Controllers\AssetExportController;
 use App\Http\Controllers\LicenseAssignmentController;
 use App\Http\Controllers\LicenseController;
+use App\Http\Controllers\MaintenanceController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -25,6 +26,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('licenses', LicenseController::class);
     Route::post('licenses/{license}/assign', [LicenseAssignmentController::class, 'store'])->name('licenses.assign');
     Route::delete('licenses/{license}/revoke/{user}', [LicenseAssignmentController::class, 'destroy'])->name('licenses.revoke');
+
+    Route::get('maintenance', [MaintenanceController::class, 'index'])->name('maintenance.index');
+    Route::post('maintenance', [MaintenanceController::class, 'store'])->name('maintenance.store');
+    Route::post('maintenance/{maintenance}/complete', [MaintenanceController::class, 'complete'])->name('maintenance.complete');
+    Route::post('maintenance/{maintenance}/cancel', [MaintenanceController::class, 'cancel'])->name('maintenance.cancel');
 });
 
 require __DIR__.'/settings.php';

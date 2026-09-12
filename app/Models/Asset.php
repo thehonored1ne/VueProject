@@ -73,6 +73,28 @@ class Asset extends Model
     }
 
     /**
+     * All maintenance and repair history for this asset.
+     *
+     * @return HasMany<AssetMaintenance, $this>
+     */
+    public function maintenances(): HasMany
+    {
+        return $this->hasMany(AssetMaintenance::class)->orderByDesc('created_at');
+    }
+
+    /**
+     * The active repair job if currently scheduled or in progress.
+     *
+     * @return HasOne<AssetMaintenance, $this>
+     */
+    public function currentMaintenance(): HasOne
+    {
+        return $this->hasOne(AssetMaintenance::class)
+            ->whereIn('status', ['scheduled', 'in_progress'])
+            ->latestOfMany();
+    }
+
+    /**
      * Scope query to search by asset tag, name, or serial number.
      *
      * @param  Builder<Asset>  $query

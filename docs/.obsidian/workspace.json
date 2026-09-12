@@ -190,6 +190,8 @@
   },
   "active": "85a2f67e2fca41a7",
   "lastOpenFiles": [
+    "changelog.md",
+    "features/maintenance-alerts.md",
     "features/asset-qr-export.md",
     "features/software-licenses.md",
     "domain/licenses.md",
