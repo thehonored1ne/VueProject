@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import AssetQrModal from '@/components/assets/AssetQrModal.vue';
 import AssetStatusBadge from '@/components/assets/AssetStatusBadge.vue';
 import AssetTimeline from '@/components/assets/AssetTimeline.vue';
 import AssignAssetModal from '@/components/assets/AssignAssetModal.vue';
@@ -8,7 +9,7 @@ import AppLayout from '@/layouts/AppLayout.vue';
 import type { BreadcrumbItem } from '@/types';
 import type { Asset, UserSummary } from '@/types/asset';
 import { Head, Link, router } from '@inertiajs/vue3';
-import { AlertTriangle, CheckCircle, Clock, Edit, Laptop, LogIn, LogOut, Trash2 } from 'lucide-vue-next';
+import { AlertTriangle, CheckCircle, Clock, Edit, Laptop, LogIn, LogOut, QrCode, Trash2 } from 'lucide-vue-next';
 import { computed, ref } from 'vue';
 
 const props = defineProps<{
@@ -29,6 +30,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 const assignModalOpen = ref(false);
 const checkInModalOpen = ref(false);
+const qrModalOpen = ref(false);
 
 const warrantyStatus = computed(() => {
     if (!props.asset.warranty_expires_at) return null;
@@ -137,6 +139,11 @@ function deleteAsset() {
                     >
                         <LogIn class="mr-1.5 h-4 w-4" />
                         Check In
+                    </Button>
+
+                    <Button variant="outline" @click="qrModalOpen = true" class="gap-1.5">
+                        <QrCode class="h-4 w-4" />
+                        QR Label
                     </Button>
 
                     <Button as-child variant="outline">
@@ -294,5 +301,7 @@ function deleteAsset() {
         <AssignAssetModal v-model:open="assignModalOpen" :asset="asset" :users="users" />
 
         <CheckInAssetModal v-model:open="checkInModalOpen" :asset="asset" />
+
+        <AssetQrModal v-model:open="qrModalOpen" :asset="asset" />
     </AppLayout>
 </template>

@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import AssetMetricsHeader from '@/components/assets/AssetMetricsHeader.vue';
+import AssetQrModal from '@/components/assets/AssetQrModal.vue';
 import AssetStatusBadge from '@/components/assets/AssetStatusBadge.vue';
 import AssignAssetModal from '@/components/assets/AssignAssetModal.vue';
+import BatchQrPrintModal from '@/components/assets/BatchQrPrintModal.vue';
 import CheckInAssetModal from '@/components/assets/CheckInAssetModal.vue';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -9,7 +11,7 @@ import AppLayout from '@/layouts/AppLayout.vue';
 import type { BreadcrumbItem } from '@/types';
 import type { Asset, AssetMetrics, StatusOption, TypeOption, UserSummary } from '@/types/asset';
 import { Head, Link, router } from '@inertiajs/vue3';
-import { ChevronLeft, ChevronRight, HardDrive, LogIn, LogOut, Plus, Search, X } from 'lucide-vue-next';
+import { ChevronLeft, ChevronRight, Download, HardDrive, LogIn, LogOut, Plus, Printer, QrCode, Search, X } from 'lucide-vue-next';
 import { ref } from 'vue';
 
 interface Paginated<T> {
@@ -50,7 +52,10 @@ const selectedType = ref(props.filters.type ?? '');
 // Modals state
 const assignModalOpen = ref(false);
 const checkInModalOpen = ref(false);
+const qrModalOpen = ref(false);
+const batchPrintModalOpen = ref(false);
 const activeAsset = ref<Asset | null>(null);
+const qrAsset = ref<Asset | null>(null);
 
 function openAssignModal(asset: Asset) {
     activeAsset.value = asset;
@@ -60,6 +65,21 @@ function openAssignModal(asset: Asset) {
 function openCheckInModal(asset: Asset) {
     activeAsset.value = asset;
     checkInModalOpen.value = true;
+}
+
+function openQrModal(asset: Asset) {
+    qrAsset.value = asset;
+    qrModalOpen.value = true;
+}
+
+function exportCsv() {
+    const params = new URLSearchParams();
+    if (search.value) params.set('q', search.value);
+    if (selectedStatus.value) params.set('status', selectedStatus.value);
+    if (selectedType.value) params.set('type', selectedType.value);
+
+    const queryString = params.toString();
+    window.location.href = route('assets.export') + (queryString ? `?${queryString}` : '');
 }
 
 function applyFilters() {
@@ -114,9 +134,25 @@ function formatDate(dateStr?: string | null): string {
                 </div>
 
                 <div class="flex items-center gap-2">
-                    <Button as-child>
+                    <Button
+                        variant="outline"
+                        size="sm"
+                        @click="batchPrintModalOpen = true"
+                        :disabled="assets.data.length === 0"
+                        class="gap-1.5 text-xs"
+                    >
+                        <Printer class="h-3.5 w-3.5" />
+                        Print Labels
+                    </Button>
+
+                    <Button variant="outline" size="sm" @click="exportCsv" :disabled="assets.total === 0" class="gap-1.5 text-xs">
+                        <Download class="h-3.5 w-3.5" />
+                        Export CSV
+                    </Button>
+
+                    <Button as-child size="sm" class="text-xs">
                         <Link :href="route('assets.create')">
-                            <Plus class="mr-1.5 h-4 w-4" />
+                            <Plus class="mr-1.5 h-3.5 w-3.5" />
                             Register Asset
                         </Link>
                     </Button>
@@ -331,6 +367,17 @@ function formatDate(dateStr?: string | null): string {
                                             Check In
                                         </Button>
 
+                                        <!-- QR Code Button -->
+                                        <Button
+                                            size="sm"
+                                            variant="outline"
+                                            class="h-7 w-7 p-0 text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
+                                            title="View / Print QR Code"
+                                            @click="openQrModal(asset)"
+                                        >
+                                            <QrCode class="h-3.5 w-3.5" />
+                                        </Button>
+
                                         <!-- View Link -->
                                         <Button as-child size="sm" variant="ghost" class="h-7 text-xs">
                                             <Link :href="route('assets.show', asset.id)"> Details </Link>
@@ -380,5 +427,9 @@ function formatDate(dateStr?: string | null): string {
         <AssignAssetModal v-model:open="assignModalOpen" :asset="activeAsset" :users="users" />
 
         <CheckInAssetModal v-model:open="checkInModalOpen" :asset="activeAsset" />
+
+        <AssetQrModal v-model:open="qrModalOpen" :asset="qrAsset" />
+
+        <BatchQrPrintModal v-model:open="batchPrintModalOpen" :assets="assets.data" />
     </AppLayout>
 </template>
