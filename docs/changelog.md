@@ -4,9 +4,23 @@ All notable changes to **AssetFlow** are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] - `feat/executive-dashboard`
+
+### Added
+- **Executive Operations & Fleet Analytics Dashboard (`/dashboard`)**:
+  - Replaced starter kit placeholder with an IT operations control center.
+  - Live capital KPIs: Total Fleet Valuation (Hardware + Software), Deployment Utilization Rate, Software Seat Saturation, and Attention Required counts.
+  - Immediate Attention Queue surfacing overdue asset returns, expiring hardware warranties (≤ 30d), and impending software subscription renewals (≤ 30d).
+  - Hardware inventory distribution breakdown by category with utilization progress bars.
+  - Unified operational activity audit stream aggregating custody changes, repair events, and seat assignments.
+  - Quick action launch buttons for rapid administrative workflows.
+- **Unified Full-Stack Verification CLI Command (`php artisan app:verify`)**:
+  - Single command running Pint, Pest, ESLint, and Prettier sequentially with timing metrics and status summary table.
+  - Supports `--fix` for automatic code formatting and `--skip-frontend` for backend-only checks.
+
 ---
 
-## [Unreleased] - `feat/maintenance-alerts`
+## [0.4.0] - 2026-09-13 - `feat/maintenance-alerts`
 
 ### Added
 - **Hardware Maintenance Operations Center**:

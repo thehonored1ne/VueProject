@@ -3,6 +3,7 @@
 use App\Http\Controllers\AssetAssignmentController;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\AssetExportController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LicenseAssignmentController;
 use App\Http\Controllers\LicenseController;
 use App\Http\Controllers\MaintenanceController;
@@ -14,9 +15,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
+    Route::get('dashboard', DashboardController::class)->name('dashboard');
 
     Route::get('assets/export', AssetExportController::class)->name('assets.export');
     Route::resource('assets', AssetController::class);

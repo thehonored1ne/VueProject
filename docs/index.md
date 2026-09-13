@@ -14,6 +14,7 @@ Welcome to the project's **Single Source of Truth (SSOT)**. This Obsidian vault 
   - **[[domain/assets|Assets & Custody Assignments]]**: Hardware registry, lifecycle states, and assignment models.
   - **[[domain/licenses|Software Licenses & Seats]]**: Subscriptions, seat allocations, and renewal lifecycles.
 - **[[features/index|Features & Flows]]**: Functional specifications, user stories, and Inertia Vue 3 screen workflows.
+  - **[[features/executive-dashboard|Executive Operations & Analytics Dashboard]]**: IT operations command center, fleet valuation, utilization rates, and urgent queues.
   - **[[features/asset-management|AssetFlow Management]]**: Inventory dashboard, check-out/check-in, warranty tracking, and audit trails.
   - **[[features/software-licenses|Software Seat Management]]**: Seat allocations, overallocation prevention, and license renewals.
   - **[[features/asset-qr-export|Asset QR Labeling & Data Export]]**: Printable hardware label badges, thermal stickers, and streamed CSV exports.

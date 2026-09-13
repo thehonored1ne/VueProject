@@ -182,7 +182,7 @@ function formatDate(dateStr?: string | null): string {
                         <select
                             v-model="selectedType"
                             @change="applyFilters"
-                            class="h-9 rounded-md border border-neutral-200 bg-transparent px-3 py-1 text-xs shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 dark:border-neutral-800 dark:focus-visible:ring-neutral-300"
+                            class="h-9 rounded-md border border-neutral-200 bg-white px-3 py-1 text-xs text-neutral-900 shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100 dark:focus-visible:ring-neutral-300"
                         >
                             <option value="">All Categories</option>
                             <option v-for="t in types" :key="t.value" :value="t.value">

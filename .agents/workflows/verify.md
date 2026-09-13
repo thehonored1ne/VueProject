@@ -6,9 +6,19 @@ description: Run the full-stack verification suite (Pest PHP, Pint, ESLint, Pret
 
 This workflow executes all quality, safety, and testing gates defined in the project guardrails to verify code correctness before deployment or task completion.
 
+### ⚡ Quick One-Command Verification
+Run the unified verification suite that executes Pint, Pest, ESLint, and Prettier in sequence with a clean summary:
+```bash
+php artisan app:verify
+```
+To automatically repair styling issues:
+```bash
+php artisan app:verify --fix
+```
+
 ---
 
-## Steps
+## Detailed Step-by-Step Gates
 
 ### Step 1: Backend Code Styling (Laravel Pint)
 Run the Pint style checker:
