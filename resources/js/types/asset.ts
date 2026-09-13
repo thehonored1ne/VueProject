@@ -19,6 +19,7 @@ export interface AssetAssignment {
     condition_on_assignment?: string | null;
     condition_on_return?: string | null;
     notes?: string | null;
+    asset?: Asset;
     user?: UserSummary;
     assigned_by_user?: UserSummary;
     created_at: string;

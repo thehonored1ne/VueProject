@@ -42,3 +42,4 @@ export interface User {
 export type BreadcrumbItemType = BreadcrumbItem;
 
 export * from './dashboard';
+export * from './employee';

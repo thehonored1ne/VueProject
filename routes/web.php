@@ -4,6 +4,7 @@ use App\Http\Controllers\AssetAssignmentController;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\AssetExportController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LicenseAssignmentController;
 use App\Http\Controllers\LicenseController;
 use App\Http\Controllers\MaintenanceController;
@@ -30,6 +31,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('maintenance', [MaintenanceController::class, 'store'])->name('maintenance.store');
     Route::post('maintenance/{maintenance}/complete', [MaintenanceController::class, 'complete'])->name('maintenance.complete');
     Route::post('maintenance/{maintenance}/cancel', [MaintenanceController::class, 'cancel'])->name('maintenance.cancel');
+
+    Route::resource('employees', EmployeeController::class)->parameters(['employees' => 'user']);
+    Route::post('employees/{user}/offboard', [EmployeeController::class, 'offboard'])->name('employees.offboard');
 });
 
 require __DIR__.'/settings.php';

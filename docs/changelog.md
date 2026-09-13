@@ -4,7 +4,22 @@ All notable changes to **AssetFlow** are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] - `feat/executive-dashboard`
+## [Unreleased] - `feat/employee-custody`
+
+### Added
+- **Employee Directory & 360° Custody Portal (`/employees`)**:
+  - Searchable employee directory listing team members, department emails, active hardware counts, and software seats.
+  - Comprehensive 360° custody detail portal (`/employees/{user}`) showing current hardware in custody, active software license seats, and historical custody audit logs.
+  - **Full Employee CRUD Management**:
+    - Creation (`/employees/create`, `StoreEmployeeRequest`, `CreateEmployeeAction`) with optional customized initial password or auto-generation.
+    - Profile editing (`/employees/{user}/edit`, `UpdateEmployeeRequest`, `UpdateEmployeeAction`).
+    - Safe deletion (`DeleteEmployeeAction`) enforcing self-deletion prevention and active custody locks (active hardware or software seats must be offboarded first).
+  - **1-Click Atomic Offboarding Action (`/employees/{user}/offboard`)**: Single-transaction offboarding workflow returning all checked-out hardware, updating asset statuses to `available`, recording return notes, and releasing all assigned software license seats.
+  - Added `Employees` navigation item to `AppSidebar.vue`.
+
+---
+
+## [0.5.0] - 2026-09-13 - `feat/executive-dashboard`
 
 ### Added
 - **Executive Operations & Fleet Analytics Dashboard (`/dashboard`)**:

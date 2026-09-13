@@ -19,6 +19,7 @@ Welcome to the project's **Single Source of Truth (SSOT)**. This Obsidian vault 
   - **[[features/software-licenses|Software Seat Management]]**: Seat allocations, overallocation prevention, and license renewals.
   - **[[features/asset-qr-export|Asset QR Labeling & Data Export]]**: Printable hardware label badges, thermal stickers, and streamed CSV exports.
   - **[[features/maintenance-alerts|Hardware Maintenance & Expiration Alerts]]**: Equipment repairs, service logging, and warranty/renewal alerts.
+  - **[[features/employee-custody|Employee Directory & 360° Custody Portal]]**: Central employee directory, 360-degree hardware/software custody history, and 1-click atomic offboarding.
 - **[[api/index|API & Routing]]**: Route endpoints, form request contracts, DTO shapes, and external integrations.
 - **[[changelog|Project Changelog]]**: Release history, milestones, and unreleased feature developments.
 
